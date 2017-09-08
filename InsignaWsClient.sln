@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.10
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsignaWsClient", "InsignaWsClient\InsignaWsClient.csproj", "{785DB6EF-D583-43E8-ADAD-A8DC63681AAD}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "InsignaWsClientVB", "InsignaWsClientVB\InsignaWsClientVB.vbproj", "{7EF6EF8D-B755-41CA-BC7E-7393FF00964F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{785DB6EF-D583-43E8-ADAD-A8DC63681AAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{785DB6EF-D583-43E8-ADAD-A8DC63681AAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{785DB6EF-D583-43E8-ADAD-A8DC63681AAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{785DB6EF-D583-43E8-ADAD-A8DC63681AAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EF6EF8D-B755-41CA-BC7E-7393FF00964F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EF6EF8D-B755-41CA-BC7E-7393FF00964F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EF6EF8D-B755-41CA-BC7E-7393FF00964F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EF6EF8D-B755-41CA-BC7E-7393FF00964F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DFBF1244-D76D-43FD-AC3C-B213D81CE096}
+	EndGlobalSection
+EndGlobal

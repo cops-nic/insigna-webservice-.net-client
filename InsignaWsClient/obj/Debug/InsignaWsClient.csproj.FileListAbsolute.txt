@@ -1,0 +1,7 @@
+C:\X\visual studio clients\nueva carpeta\InsignaWsClient\InsignaWsClient\bin\Debug\InsignaWsClient.exe.config
+C:\X\visual studio clients\nueva carpeta\InsignaWsClient\InsignaWsClient\bin\Debug\InsignaWsClient.exe
+C:\X\visual studio clients\nueva carpeta\InsignaWsClient\InsignaWsClient\bin\Debug\InsignaWsClient.pdb
+C:\X\visual studio clients\nueva carpeta\InsignaWsClient\InsignaWsClient\obj\Debug\InsignaWsClient.csprojResolveAssemblyReference.cache
+C:\X\visual studio clients\nueva carpeta\InsignaWsClient\InsignaWsClient\obj\Debug\InsignaWsClient.csproj.CoreCompileInputs.cache
+C:\X\visual studio clients\nueva carpeta\InsignaWsClient\InsignaWsClient\obj\Debug\InsignaWsClient.exe
+C:\X\visual studio clients\nueva carpeta\InsignaWsClient\InsignaWsClient\obj\Debug\InsignaWsClient.pdb

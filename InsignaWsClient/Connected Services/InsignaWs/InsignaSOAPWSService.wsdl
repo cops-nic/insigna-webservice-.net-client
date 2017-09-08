@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:tns="http://ws.certipass.mx/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="InsignaSOAPWSService" targetNamespace="http://ws.certipass.mx/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>Web Service de Insigna</wsdl:documentation>
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" wsu:Id="SecurityServiceBindingPolicy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SupportingTokens>
+          <wsp:Policy>
+            <sp:UsernameToken sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <wsp:All>
+                  <sp:WssUsernameToken11 />
+                </wsp:All>
+              </wsp:Policy>
+            </sp:UsernameToken>
+          </wsp:Policy>
+        </sp:SupportingTokens>
+        <sp:TransportBinding>
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+                <sp:Basic192 />
+                <sp:Basic128 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Lax />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema">
+      <xsd:import schemaLocation="https://beta.ws.insigna.mx/services?xsd=InsignaSOAPWSService_schema1.xsd" namespace="http://ws.certipass.mx/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="validateCfdiResponse">
+    <wsdl:part name="parameters" element="tns:validateCfdiResponse" />
+  </wsdl:message>
+  <wsdl:message name="signCfdi">
+    <wsdl:part name="parameters" element="tns:signCfdi" />
+  </wsdl:message>
+  <wsdl:message name="validateCfdi">
+    <wsdl:part name="parameters" element="tns:validateCfdi" />
+  </wsdl:message>
+  <wsdl:message name="cancelCfdi">
+    <wsdl:part name="parameters" element="tns:cancelCfdi" />
+  </wsdl:message>
+  <wsdl:message name="signCfdiResponse">
+    <wsdl:part name="parameters" element="tns:signCfdiResponse" />
+  </wsdl:message>
+  <wsdl:message name="verifyOperation">
+    <wsdl:part name="parameters" element="tns:verifyOperation" />
+  </wsdl:message>
+  <wsdl:message name="OperationFailedException">
+    <wsdl:part name="OperationFailedException" element="tns:OperationFailed" />
+  </wsdl:message>
+  <wsdl:message name="getCfdiInfo">
+    <wsdl:part name="parameters" element="tns:getCfdiInfo" />
+  </wsdl:message>
+  <wsdl:message name="getCfdiInfoResponse">
+    <wsdl:part name="parameters" element="tns:getCfdiInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="cancelCfdiResponse">
+    <wsdl:part name="parameters" element="tns:cancelCfdiResponse" />
+  </wsdl:message>
+  <wsdl:message name="verifyOperationResponse">
+    <wsdl:part name="parameters" element="tns:verifyOperationResponse" />
+  </wsdl:message>
+  <wsdl:portType name="InsignaSOAPWS">
+    <wsdl:documentation>Web Service de Insigna</wsdl:documentation>
+    <wsdl:operation name="verifyOperation">
+      <wsdl:documentation>Método para verificar una operación.</wsdl:documentation>
+      <wsdl:input name="verifyOperation" message="tns:verifyOperation" />
+      <wsdl:output name="verifyOperationResponse" message="tns:verifyOperationResponse" />
+      <wsdl:fault name="OperationFailedException" message="tns:OperationFailedException" />
+    </wsdl:operation>
+    <wsdl:operation name="validateCfdi">
+      <wsdl:documentation>Método de validación de CFDI.</wsdl:documentation>
+      <wsdl:input name="validateCfdi" message="tns:validateCfdi" />
+      <wsdl:output name="validateCfdiResponse" message="tns:validateCfdiResponse" />
+      <wsdl:fault name="OperationFailedException" message="tns:OperationFailedException" />
+    </wsdl:operation>
+    <wsdl:operation name="cancelCfdi">
+      <wsdl:documentation>Método para cancelar un CFDI.</wsdl:documentation>
+      <wsdl:input name="cancelCfdi" message="tns:cancelCfdi" />
+      <wsdl:output name="cancelCfdiResponse" message="tns:cancelCfdiResponse" />
+      <wsdl:fault name="OperationFailedException" message="tns:OperationFailedException" />
+    </wsdl:operation>
+    <wsdl:operation name="getCfdiInfo">
+      <wsdl:documentation>Método para obtener la información de un cfdi timbrado.</wsdl:documentation>
+      <wsdl:input name="getCfdiInfo" message="tns:getCfdiInfo" />
+      <wsdl:output name="getCfdiInfoResponse" message="tns:getCfdiInfoResponse" />
+      <wsdl:fault name="OperationFailedException" message="tns:OperationFailedException" />
+    </wsdl:operation>
+    <wsdl:operation name="signCfdi">
+      <wsdl:documentation>Método para timbrar un CFDI.</wsdl:documentation>
+      <wsdl:input name="signCfdi" message="tns:signCfdi" />
+      <wsdl:output name="signCfdiResponse" message="tns:signCfdiResponse" />
+      <wsdl:fault name="OperationFailedException" message="tns:OperationFailedException" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="InsignaSOAPWSServiceSoapBinding" type="tns:InsignaSOAPWS">
+    <wsdl:documentation>Documentación de Data Binding</wsdl:documentation>
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsp:PolicyReference URI="#SecurityServiceBindingPolicy" />
+    <wsdl:operation name="verifyOperation">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input name="verifyOperation">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="verifyOperationResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="OperationFailedException">
+        <soap12:fault use="literal" name="OperationFailedException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="validateCfdi">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input name="validateCfdi">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="validateCfdiResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="OperationFailedException">
+        <soap12:fault use="literal" name="OperationFailedException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="cancelCfdi">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input name="cancelCfdi">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="cancelCfdiResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="OperationFailedException">
+        <soap12:fault use="literal" name="OperationFailedException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCfdiInfo">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input name="getCfdiInfo">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getCfdiInfoResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="OperationFailedException">
+        <soap12:fault use="literal" name="OperationFailedException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="signCfdi">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input name="signCfdi">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="signCfdiResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="OperationFailedException">
+        <soap12:fault use="literal" name="OperationFailedException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="InsignaSOAPWSService">
+    <wsdl:port name="InsignaSOAPWSPort" binding="tns:InsignaSOAPWSServiceSoapBinding">
+      <soap12:address location="https://beta.ws.insigna.mx/services" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://ws.certipass.mx/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.certipass.mx/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="CfdiCancelWrapper" type="tns:cfdiCancelWrapper" />
+  <xs:element name="CfdiInfoWrapper" type="tns:cfdiInfoWrapper" />
+  <xs:element name="CfdiSignWrapper" type="tns:cfdiSignWrapper" />
+  <xs:element name="OperationFailed" type="tns:operationFailed" />
+  <xs:element name="ValidateCfdiWrapper" type="tns:validateCfdiWrapper" />
+  <xs:element name="VerifyOperationWrapper" type="tns:verifyOperationWrapper" />
+  <xs:element name="cancelCfdi" type="tns:cancelCfdi" />
+  <xs:element name="cancelCfdiResponse" type="tns:cancelCfdiResponse" />
+  <xs:element name="getCfdiInfo" type="tns:getCfdiInfo" />
+  <xs:element name="getCfdiInfoResponse" type="tns:getCfdiInfoResponse" />
+  <xs:element name="signCfdi" type="tns:signCfdi" />
+  <xs:element name="signCfdiResponse" type="tns:signCfdiResponse" />
+  <xs:element name="validateCfdi" type="tns:validateCfdi" />
+  <xs:element name="validateCfdiResponse" type="tns:validateCfdiResponse" />
+  <xs:element name="verifyOperation" type="tns:verifyOperation" />
+  <xs:element name="verifyOperationResponse" type="tns:verifyOperationResponse" />
+  <xs:complexType name="verifyOperation">
+    <xs:sequence>
+      <xs:element name="verifyOperationWrapper" type="tns:verifyOperationWrapper" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verifyOperationWrapper">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="originalChain" type="xs:string" />
+      <xs:element minOccurs="0" name="signTransactionId" type="xs:string" />
+      <xs:element minOccurs="0" name="transactionId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verifyOperationResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:OperationVerifyResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OperationVerifyResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:GenericResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="uuid" type="xs:string" />
+          <xs:element minOccurs="0" name="cfdiStatus" type="xs:string" />
+          <xs:element minOccurs="0" name="cfdi" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="GenericResult">
+    <xs:sequence>
+      <xs:element name="responseCode" type="xs:int" />
+      <xs:element minOccurs="0" name="responseDescription" type="xs:string" />
+      <xs:element minOccurs="0" name="transactionId" type="xs:string" />
+      <xs:element minOccurs="0" name="serverTransactionId" type="xs:string" />
+      <xs:element minOccurs="0" name="requestDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="responseDate" type="xs:dateTime" />
+      <xs:element name="executionTime" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="operationFailed">
+    <xs:sequence>
+      <xs:element name="errorCode" type="xs:int" />
+      <xs:element minOccurs="0" name="errorDescription" type="xs:string" />
+      <xs:element minOccurs="0" name="transactionId" type="xs:string" />
+      <xs:element minOccurs="0" name="serverTransactionId" type="xs:string" />
+      <xs:element minOccurs="0" name="requestDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="responseDate" type="xs:dateTime" />
+      <xs:element name="executionTime" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="validateCfdi">
+    <xs:sequence>
+      <xs:element name="validateCfdiWrapper" type="tns:validateCfdiWrapper" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="validateCfdiWrapper">
+    <xs:sequence>
+      <xs:element name="cfdi" type="xs:string" />
+      <xs:element minOccurs="0" name="transactionId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="validateCfdiResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:CfdiValidateResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CfdiValidateResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:GenericResult">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="cancelCfdi">
+    <xs:sequence>
+      <xs:element name="cfdiCancelWrapper" type="tns:cfdiCancelWrapper" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cfdiCancelWrapper">
+    <xs:sequence>
+      <xs:element name="uuid" type="xs:string" />
+      <xs:element minOccurs="0" name="signatureValue" type="xs:string" />
+      <xs:element name="cancelationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="certificate" type="xs:string" />
+      <xs:element minOccurs="0" name="transactionId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cancelCfdiResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:CfdiCancelResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CfdiCancelResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:GenericResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="receipt" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="getCfdiInfo">
+    <xs:sequence>
+      <xs:element name="cfdiInfoWrapper" type="tns:cfdiInfoWrapper" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cfdiInfoWrapper">
+    <xs:sequence>
+      <xs:element name="uuid" type="xs:string" />
+      <xs:element minOccurs="0" name="transactionId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCfdiInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:CfdiInfoResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CfdiInfoResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:GenericResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="uuid" type="xs:string" />
+          <xs:element minOccurs="0" name="cfdiStatus" type="xs:string" />
+          <xs:element minOccurs="0" name="cfdi" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="signCfdi">
+    <xs:sequence>
+      <xs:element name="cfdiSignWrapper" type="tns:cfdiSignWrapper" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cfdiSignWrapper">
+    <xs:sequence>
+      <xs:element name="cfdi" type="xs:string" />
+      <xs:element minOccurs="0" name="transactionId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="signCfdiResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:CfdiSignResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CfdiSignResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:GenericResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="signedXml" type="xs:string" />
+          <xs:element minOccurs="0" name="uuid" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>
